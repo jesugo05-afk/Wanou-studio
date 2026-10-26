@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wanou Studio : photographie, production vidéo, lives et design graphique et création de contenu au Bénin.">
+  <title>Wanou Studio | Image, vidéo, design & live</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:#0a0a0a;
+      --white:#fff;
+      --yellow:#f2b900;
+      --gray:#858585;
+      --light:#f5f5f2;
+      --muted:#b9b9b9;
+      --elle-purple:#5b005b;
+      --elle-yellow:#f2b900;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:82px; }
+    body { margin:0; font-family:"DM Sans",sans-serif; color:var(--black); }
+    h1,h2,h3,h4,.brand,.nav-link { font-family:"Montserrat",sans-serif; }
+    a { text-decoration:none; }
+    .navbar { background:rgba(10,10,10,.96); backdrop-filter:blur(12px); }
+    .brand { color:#fff; font-weight:900; letter-spacing:.12em; line-height:1; font-size:1.45rem; }
+    .brand small { display:block; text-align:center; font-size:.55rem; font-weight:500; letter-spacing:.55em; margin-top:5px; }
+    .brand:hover { color:#fff; }
+    .nav-link { color:#eee!important; font-size:.82rem; font-weight:600; margin:0 .2rem; }
+    .nav-link:hover { color:var(--yellow)!important; }
+    .btn-yellow { background:var(--yellow); color:#111; border:1px solid var(--yellow); font-weight:800; border-radius:999px; padding:.8rem 1.25rem; transition:.2s; }
+    .btn-yellow:hover { background:#fff; border-color:#fff; color:#111; transform:translateY(-2px); }
+    .btn-outline-dark { border:1px solid var(--black); border-radius:999px; font-weight:700; padding:.7rem 1.1rem; }
+    .btn-outline-dark:hover { background:var(--black); color:#fff; }
+    .eyebrow { color:#d49f00; text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; font-weight:900; }
+    .hero { min-height:400px; display:flex; align-items:center; color:#fff; background:
+      linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.78) 43%,rgba(0,0,0,.18) 100%),
+      url('images/accueilstudiowanou.jpg') center/cover; }
+    .hero h1 { font-size:clamp(70px); line-height:.9; letter-spacing:-.06em; font-weight:900; text-transform:uppercase; }
+    .hero h1 span { color:var(--yellow); }
+    .hero-copy { max-width:560px; color:#e4e4e4; font-size:1.03rem; }
+    .section-pad { padding:88px 0; }
+    .section-title { font-size:clamp(2rem,4vw,3.1rem); font-weight:900; letter-spacing:-.045em; line-height:1.04; }
+    .section-lead { color:#5b5b5b; max-width:580px; }
+    .service-card { height:100%; background:#fff; border:1px solid #e9e9e9; border-radius:18px; padding:26px 22px; transition:.25s; }
+    .service-card:hover { transform:translateY(-5px); box-shadow:0 18px 45px rgba(0,0,0,.09); border-color:var(--yellow); }
+    .service-icon { width:52px;height:52px;border-radius:15px;background:var(--black);color:var(--yellow);display:grid;place-items:center;font-size:1.45rem;margin-bottom:20px; }
+    .service-card h3 { font-size:1.05rem;font-weight:800; }
+    .service-card p { color:#666;font-size:.9rem;margin-bottom:0; }
+    .portfolio { background:var(--black); color:#fff; }
+    .portfolio .section-lead { color:#c7c7c7; }
+    .portfolio-img { width:100%;height:100%;min-height:190px;object-fit:cover;border-radius:15px;filter:saturate(.86);transition:.3s; }
+    .portfolio-img:hover { filter:saturate(1.1); transform:scale(1.01); }
+    .portfolio-tile { overflow:hidden;border-radius:15px;position:relative;min-height:190px;background:#222; }
+    .portfolio-tile .tile-label { position:absolute;left:15px;bottom:15px;background:rgba(0,0,0,.72);color:#fff;padding:7px 11px;border-radius:7px;font-size:.78rem;font-weight:700; }
+    .elle { background:#100b12;color:#fff; }
+    .elle-hero { min-height:370px;display:flex;align-items:center;background:
+      linear-gradient(90deg,rgba(16,4,20,.96),rgba(35,0,42,.75),rgba(20,0,20,.15)),
+      url('images/cover_ellefoot.png') center/cover; border-top:3px solid var(--elle-purple); }
+    .elle-logo { font-family:Montserrat,sans-serif;font-size:clamp(2.7rem,6vw,4.6rem);font-weight:900;line-height:.9;letter-spacing:-.05em; }
+    .elle-logo span { color:var(--elle-yellow); }
+    .elle .eyebrow { color:var(--elle-yellow); }
+    .elle-tabs { display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 22px; }
+    .elle-tabs a { border-radius:999px;padding:10px 22px;background:#2a142d;color:#fff;font-size:.85rem;font-weight:700; }
+    .elle-tabs a:first-child { background:var(--elle-yellow);color:#1b101b; }
+    .episode-card { height:100%;background:#1b171d;border:1px solid #342a35;border-radius:13px;overflow:hidden; }
+    .episode-card img { width:100%;aspect-ratio:16/9;object-fit:cover; }
+    .episode-body { padding:16px; }
+    .episode-tag { font-size:.68rem;letter-spacing:.08em;color:var(--elle-yellow);font-weight:900;text-transform:uppercase; }
+    .episode-body h3 { font-size:1rem;font-weight:800;margin:8px 0; }
+    .episode-body p { color:#c5bdc7;font-size:.86rem; }
+    .episode-body a { color:var(--elle-yellow);font-size:.83rem;font-weight:800; }
+    .about-img { width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:16px;filter:grayscale(100%); }
+    .value { display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:700; }
+    .value span { color:#d49f00;font-size:1.4rem; }
+    .contact { background:#0a0a0a;color:#fff;position:relative;overflow:hidden; }
+    .contact .section-lead { color:#c8c8c8; }
+    .contact-info { border-left:1px solid #484848;padding-left:28px; }
+    .contact-line { display:flex;gap:13px;align-items:flex-start;margin-bottom:18px;color:#e7e7e7; }
+    .contact-line .symbol { color:var(--yellow);font-size:1.2rem;width:24px; }
+    .contact-line a { color:#fff;overflow-wrap:anywhere; }
+    .contact-line a:hover { color:var(--yellow); }
+    .socials a { display:inline-grid;place-items:center;width:38px;height:38px;border:1px solid #4b4b4b;border-radius:50%;color:#fff;margin-right:7px;font-size:.8rem;font-weight:800; }
+    .socials a:hover { color:var(--yellow);border-color:var(--yellow); }
+    footer { background:#050505;color:#aaa;border-top:1px solid #333;padding:22px 0;font-size:.8rem; }
+    footer a { color:#ddd; }
+    footer a:hover { color:var(--yellow); }
+    @media (max-width: 767px) {
+  .hero { min-height: 450px; align-items: flex-start; }
+  .hero .container { padding-top: 0px; padding-bottom: 0px; }
+  .section-pad { padding: 62px 15px; } /* Ajoute de l'espace sur les côtés pour les sections */
+  .contact-info { border-left: 0; border-top: 1px solid #484848; padding: 25px 0 0; margin-top: 20px; }
+  .about-img { min-height: 240px; }
+  .container { padding-left: 15px !important; padding-right: 15px !important; }
+}
+body {
+        background-color: #121212 !important;
+    }
+    footer {
+        border-top: none !important;
+    } 
+    /* Style pour la section Galerie dynamique */
+#galerie-photos .bg-black {
+    background-color: #0d0d0d !important;
+    border-color: var(--yellow) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#galerie-photos .bg-black:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(242, 185, 0, 0.15) !important;
+}
+
+#btn-wetransfer {
+    background-color: var(--yellow);
+    color: #111;
+    border: 1px solid var(--yellow);
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+#btn-wetransfer:hover:not(.disabled) {
+    background-color: #fff;
+    border-color: #fff;
+    color: #111;
+    transform: translateY(-2px);
+}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container py-2">
+    <a class="brand" href="wanou_studio_site.html"><img src="images/logostudiowanou.png" alt="logo" style="height: 50px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto my-3 my-lg-0">
+    <li class="nav-item"><a class="nav-link" href="wanou_studio_site.html">Accueil</a></li>
+    <li class="nav-item"><a class="nav-link" href="wanou_studio_site.html#services">Services</a></li>
+    <li class="nav-item"><a class="nav-link" href="wanou_studio_site.html#elle-foot">Elle Foot</a></li>
+    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+    <li class="nav-item"><a class="nav-link" href="wanou_studio_site.html#apropos">À propos</a></li>
+    <li class="nav-item">
+    <a class="nav-link text-warning fw-bold px-3 px-md-2" href="#galerie-photos">Galerie</a>
+</li>
+
+</ul>
+      <a class="btn btn-yellow btn-sm" href="wanou_studio_site.html#contact">Contactez-nous </a>
+    </div>
+  </div>
+</nav>
+
+<section class="section-pad portfolio" id="portfolio">
+    <div class="container">
+        
+       <!-- SECTION DE PRÉSENTATION DE L'ARTISTE (Format compact) -->
+<div class="artist-profile bg-white border border-warning rounded-4 p-3 p-md-4 mb-5 shadow" id="artiste-photographe">
+    <div class="row align-items-center g-4">
+        <!-- Photo d'identité / Portrait -->
+        <div class="col-lg-4 text-center">
+            <img src="images/Id_jesugoeyeton.jpg" alt="Portrait de l'artiste" class="img-fluid rounded-circle border border-warning shadow" style="width: 170px; height: 170px; object-fit: cover;">
+        </div>
+        <!-- Informations et Bio -->
+        <div class="col-lg-8">
+            <h3 class="text-dark h3 fw-bold mb-1">Jesugo Eyeton</h3>
+            <div>
+                <span class="badge bg-warning text-dark mb-2 px-3 py-1.5 fw-bold">Photographe & Vidéaste</span>
+            </div>
+            <p class="text-secondary mb-3 small">
+                Spécialisé dans la capture de l'instant décisif, le sport événementiel et l'univers corporate. Je mets mon œil artistique et technique au service de vos projets pour des visuels percutants et professionnels.
+            </p>
+            <!-- Contacts rapides avec icônes -->
+            <div class="d-flex flex-wrap gap-4 text-dark fw-medium">
+                <div>
+                    <i class="fas fa-phone-alt text-warning me-2"></i> +229 01 54 65 21 66
+                </div>
+                <div>
+                    <i class="fas fa-envelope text-warning me-2"></i> contact@wanoustudio.com
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- En-tête "Mes réalisations" -->
+<div class="row mb-5">
+    <div class="col-lg-7">
+        <h2 class="display-5 fw-bold text-white mb-3">Mes réalisations</h2>
+        <p class="text-light opacity-75">Découvrez l'ensemble de nos projets en photographie, production vidéo et design graphique.</p>
+    </div>
+</div>
+
+        <!-- 1. SECTION PHOTOGRAPHIE (Galerie asymétrique variée de 10 photos) -->
+<div class="mb-5 pb-4 border-bottom border-secondary" id="photographie">
+    <div class="mb-4">
+        <h3 class="text-white h3 mb-2"> Photographie</h3>
+        <p class="text-light opacity-75 mb-0">Corporate, Sport & événementiel </p>
+    </div>
+
+    <!-- PREMIER BLOC DE 5 PHOTOS (Grande image à droite) -->
+    <div class="row g-4 align-items-stretch mb-4">
+        <!-- Colonne gauche (2 photos empilées) -->
+        <div class="col-md-3 d-flex flex-column gap-4">
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                <img src="images/bruxelles_wanoustudio.jpg" alt="Photo 1" class="img-fluid w-100 rounded-3" style="height: 180px; object-fit: cover;">
+            </div>
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                <img src="images/portrait_wanoustudio.jpg" alt="Photo 2" class="img-fluid w-100 rounded-3" style="height: 180px; object-fit: cover;">
+            </div>
+        </div>
+        <!-- Colonne centre (2 photos empilées) -->
+        <div class="col-md-4 d-flex flex-column gap-4">
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                <img src="images/jcgala_ellefootcopyright-18.jpg" alt="Photo 3" class="img-fluid w-100 rounded-3" style="height: 180px; object-fit: cover;">
+            </div>
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                <img src="images/jcgala_ellefootcopyright-12.jpg" alt="Photo 4" class="img-fluid w-100 rounded-3" style="height: 180px; object-fit: cover;">
+            </div>
+        </div>
+        <!-- Colonne droite (Grande photo verticale) -->
+        <div class="col-md-5">
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 h-100">
+                <img src="images/jcgala_ellefootcopyright-20.jpg" alt="Photo 5" class="img-fluid w-100 rounded-3 h-100" style="object-fit: cover; min-height: 380px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- DEUXIÈME BLOC DE 5 PHOTOS (Disposition inversée : Grande image à gauche) -->
+    <div class="row g-4 align-items-stretch mb-4">
+        
+            <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                <img src="images/ouidah_jesugoeyeton_wanoustudio.jpg" alt="Photo 10" class="img-fluid w-100 rounded-3" style="height: 180px; object-fit: cover;">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+        <!-- 2. SECTION PRODUCTION VIDÉO (Fond noir, 4 colonnes, avec titres et espacée des bords) -->
+<div class="mb-5 pb-4 border-bottom border-secondary bg-dark text-white py-5 px-3 px-md-4 rounded-4" id="video">
+    <div class="row justify-content-center">
+        <div class="col-xl-11">
+            
+            <!-- En-tête de section bien aligné -->
+            <div class="mb-4">
+                <h3 class="text-white h3 mb-2">Production Vidéo</h3>
+                <p class="text-light opacity-75 mb-0">Clips, podcasts et reportages</p>
+            </div>
+
+            <!-- Grille de 4 colonnes avec titres -->
+            <div class="row g-3">
+                <!-- Vidéo / Élément 1 -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-black border border-secondary p-2 h-100 d-flex flex-column">
+                        <img src="images/logoeillefootpodcast.png" alt="Vidéo 1" class="img-fluid w-100 rounded-3" style="aspect-ratio: 16 / 9; object-fit: cover;">
+                        <div class="mt-2 p-1 text-center">
+                            <h6 class="text-white fw-bold mb-0" style="font-size: 0.95rem;">Podcast Épisode 01</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vidéo / Élément 2 -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-black border border-secondary p-2 h-100 d-flex flex-column">
+                        <img src="images/cover_ellefoot.png" alt="Vidéo 2" class="img-fluid w-100 rounded-3" style="aspect-ratio: 16 / 9; object-fit: cover;">
+                        <div class="mt-2 p-1 text-center">
+                            <h6 class="text-white fw-bold mb-0" style="font-size: 0.95rem;">Teaser Officiel</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vidéo / Élément 3 -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-black border border-secondary p-2 h-100 d-flex flex-column">
+                        <img src="images/logoeillefootpodcast.png" alt="Vidéo 3" class="img-fluid w-100 rounded-3" style="aspect-ratio: 16 / 9; object-fit: cover;">
+                        <div class="mt-2 p-1 text-center">
+                            <h6 class="text-white fw-bold mb-0" style="font-size: 0.95rem;">Interview Exclu</h6>
+                        </div>
+                    </div>
+                </div>
+                <!-- Vidéo / Élément 4 -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-black border border-secondary p-2 h-100 d-flex flex-column">
+                        <img src="images/cover_ellefoot.png" alt="Vidéo 4" class="img-fluid w-100 rounded-3" style="aspect-ratio: 16 / 9; object-fit: cover;">
+                        <div class="mt-2 p-1 text-center">
+                            <h6 class="text-white fw-bold mb-0" style="font-size: 0.95rem;">Reportage Terrain</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+        <!-- 3. SECTION DESIGN GRAPHIQUE (Alignement parfait en briques sans aucun vide) -->
+<div class="mb-5 px-3 px-md-4" id="design">
+    <!-- Conteneur global aligné -->
+    <div class="row justify-content-center">
+        <div class="col-xl-11">
+            
+            <!-- En-tête de section parfaitement aligné à gauche des cartes -->
+            <div class="mb-4">
+                <h3 class="text-white h3 mb-2">Design Graphique</h3>
+                <p class="text-light opacity-75 mb-0">Affiches, covers, flyers & identité visuelle</p>
+            </div>
+
+            <!-- PREMIER BLOC (Alignement parfait) -->
+            <div class="row g-3 mb-3 align-items-stretch">
+                <!-- Colonne 1 : 2 Flyers Carrés empilés -->
+                <div class="col-6 col-md-3 d-flex flex-column gap-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                        <img src="images/ellefootamazonesu20benin-wanoustudio.png" alt="Flyer Carré 1" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                    </div>
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                        <img src="images/uskrakedragonfcadjohoun_wanoustudio.png" alt="Flyer Carré 2" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Colonne 2 : 2 Flyers Carrés empilés -->
+                <div class="col-6 col-md-3 d-flex flex-column gap-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                        <img src="images/ellefootamazonesu20benin-wanoustudio.png" alt="Flyer Carré 3" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                    </div>
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 flex-fill">
+                        <img src="images/uskrakedragonfcadjohoun_wanoustudio.png" alt="Flyer Carré 4" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 1 / 1; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Colonne 3 : Affiche Portrait debout (Ratio 3/4) -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 h-100">
+                        <img src="images/affichesitewebportonovotourswanoustudio.jpg" alt="Affiche Portrait 1" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 3 / 4; object-fit: cover;">
+                    </div>
+                </div>
+
+                <!-- Colonne 4 : Cover / Affiche Portrait (Ratio 3/4) -->
+                <div class="col-6 col-md-3">
+                    <div class="portfolio-card position-relative overflow-hidden rounded-4 bg-dark border border-secondary p-2 h-100">
+                        <img src="images/fifdopo-officiel-24waonoustudio.jpg" alt="Cover 1" class="img-fluid w-100 rounded-3 h-100" style="aspect-ratio: 3 / 4; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+            <!-- ================= SECTION GALERIE PHOTOS (ANCRÉE) ================= -->
+<div class="mb-5 pb-4 border-bottom border-secondary text-center py-4" id="galerie-photos">
+    <div class="bg-black border border-warning rounded-4 p-4 p-md-5 shadow position-relative overflow-hidden">
+        
+        <h3 class="text-white h3 mb-2">Galerie Photos</h3>
+        <p class="text-light opacity-75 mb-4">L'intégralité des photos en haute définition</p>
+
+        <!-- Zone du bouton sous contrôle ON/OFF -->
+        <div id="galerie-statut-container">
+            <button id="btn-wetransfer" class="btn btn-warning text-dark fw-bold px-4 py-3 rounded-pill shadow-lg">
+                Télécharger en HD
+            </button>
+            <p class="text-secondary small mt-2 mb-0" id="timer-info">Lien disponible pendant 7 jours</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- Script d'interrupteur ON/OFF lié à ton fichier config.js -->
+<script src="config.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnWeTransfer = document.getElementById("btn-wetransfer");
+        const timerInfo = document.getElementById("timer-info");
+
+        if (window.PORTFOLIO_CONFIG && window.PORTFOLIO_CONFIG.galerieActive === true) {
+            // MODE ON : Redirection vers WeTransfer
+            btnWeTransfer.addEventListener("click", function() {
+                if (window.PORTFOLIO_CONFIG.lienWeTransfer) {
+                    window.open(window.PORTFOLIO_CONFIG.lienWeTransfer, '_blank');
+                } else {
+                    alert("Le lien WeTransfer n'est pas configuré.");
+                }
+            });
+        } else {
+            // MODE OFF : Bouton désactivé
+            btnWeTransfer.classList.remove("btn-warning", "text-dark");
+            btnWeTransfer.classList.add("btn-secondary", "text-white", "disabled");
+            btnWeTransfer.style.cursor = "not-allowed";
+            btnWeTransfer.innerHTML = 'Galerie expirée ou indisponible';
+            
+            timerInfo.textContent = "Le lien de téléchargement est actuellement désactivé.";
+            timerInfo.classList.add("text-danger");
+        }
+    });
+</script>
+
+      <p class="small mt-3" style="color:#aaa"></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+    <a class="brand" href="#accueil"><img src="images/logostudiowanou.png" alt="Wanou Studio" class="footer-logo-img" style="width: 80px; height: auto;"></a>
+    <div>Communication · Production audiovusuelle </div>
+    <div>© <span id="year"></span> Wanou Studio. Tous droits réservés.</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

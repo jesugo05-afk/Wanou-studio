@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wanou Studio : photographie, production vidéo, lives et design graphique et création de contenu au Bénin.">
+  <title>Wanou Studio | Image, vidéo, design & live</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black:#0a0a0a;
+      --white:#fff;
+      --yellow:#f2b900;
+      --gray:#858585;
+      --light:#f5f5f2;
+      --muted:#b9b9b9;
+      --elle-purple:#5b005b;
+      --elle-yellow:#f2b900;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:82px; }
+    body { margin:0; font-family:"DM Sans",sans-serif; color:var(--black); }
+    h1,h2,h3,h4,.brand,.nav-link { font-family:"Montserrat",sans-serif; }
+    a { text-decoration:none; }
+    .navbar { background:rgba(10,10,10,.96); backdrop-filter:blur(12px); }
+    .brand { color:#fff; font-weight:900; letter-spacing:.12em; line-height:1; font-size:1.45rem; }
+    .brand small { display:block; text-align:center; font-size:.55rem; font-weight:500; letter-spacing:.55em; margin-top:5px; }
+    .brand:hover { color:#fff; }
+    .nav-link { color:#eee!important; font-size:.82rem; font-weight:600; margin:0 .2rem; }
+    .nav-link:hover { color:var(--yellow)!important; }
+    .btn-yellow { background:var(--yellow); color:#111; border:1px solid var(--yellow); font-weight:800; border-radius:999px; padding:.8rem 1.25rem; transition:.2s; }
+    .btn-yellow:hover { background:#fff; border-color:#fff; color:#111; transform:translateY(-2px); }
+    .btn-outline-dark { border:1px solid var(--black); border-radius:999px; font-weight:700; padding:.7rem 1.1rem; }
+    .btn-outline-dark:hover { background:var(--black); color:#fff; }
+    .eyebrow { color:#d49f00; text-transform:uppercase; letter-spacing:.13em; font-size:.75rem; font-weight:900; }
+    .hero { min-height:400px; display:flex; align-items:center; color:#fff; background:
+      linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.78) 43%,rgba(0,0,0,.18) 100%),
+      url('images/accueilstudiowanou.jpg') center/cover; }
+    .hero h1 { font-size:clamp(70px); line-height:.9; letter-spacing:-.06em; font-weight:900; text-transform:uppercase; }
+    .hero h1 span { color:var(--yellow); }
+    .hero-copy { max-width:560px; color:#e4e4e4; font-size:1.03rem; }
+    .section-pad { padding:88px 0; }
+    .section-title { font-size:clamp(2rem,4vw,3.1rem); font-weight:900; letter-spacing:-.045em; line-height:1.04; }
+    .section-lead { color:#5b5b5b; max-width:580px; }
+    .service-card { height:100%; background:#fff; border:1px solid #e9e9e9; border-radius:18px; padding:26px 22px; transition:.25s; }
+    .service-card:hover { transform:translateY(-5px); box-shadow:0 18px 45px rgba(0,0,0,.09); border-color:var(--yellow); }
+    .service-icon { width:52px;height:52px;border-radius:15px;background:var(--black);color:var(--yellow);display:grid;place-items:center;font-size:1.45rem;margin-bottom:20px; }
+    .service-card h3 { font-size:1.05rem;font-weight:800; }
+    .service-card p { color:#666;font-size:.9rem;margin-bottom:0; }
+    .portfolio { background:var(--black); color:#fff; }
+    .portfolio .section-lead { color:#c7c7c7; }
+    .portfolio-img { width:100%;height:100%;min-height:190px;object-fit:cover;border-radius:15px;filter:saturate(.86);transition:.3s; }
+    .portfolio-img:hover { filter:saturate(1.1); transform:scale(1.01); }
+    .portfolio-tile { overflow:hidden;border-radius:15px;position:relative;min-height:190px;background:#222; }
+    .portfolio-tile .tile-label { position:absolute;left:15px;bottom:15px;background:rgba(0,0,0,.72);color:#fff;padding:7px 11px;border-radius:7px;font-size:.78rem;font-weight:700; }
+    .elle { background:#100b12;color:#fff; }
+    .elle-hero { min-height:370px;display:flex;align-items:center;background:
+      linear-gradient(90deg,rgba(16,4,20,.96),rgba(35,0,42,.75),rgba(20,0,20,.15)),
+      url('images/cover_ellefoot.png') center/cover; border-top:3px solid var(--elle-purple); }
+    .elle-logo { font-family:Montserrat,sans-serif;font-size:clamp(2.7rem,6vw,4.6rem);font-weight:900;line-height:.9;letter-spacing:-.05em; }
+    .elle-logo span { color:var(--elle-yellow); }
+    .elle .eyebrow { color:var(--elle-yellow); }
+    .elle-tabs { display:flex;gap:8px;flex-wrap:wrap;margin:30px 0 22px; }
+    .elle-tabs a { border-radius:999px;padding:10px 22px;background:#2a142d;color:#fff;font-size:.85rem;font-weight:700; }
+    .elle-tabs a:first-child { background:var(--elle-yellow);color:#1b101b; }
+    .episode-card { height:100%;background:#1b171d;border:1px solid #342a35;border-radius:13px;overflow:hidden; }
+    .episode-card img { width:100%;aspect-ratio:16/9;object-fit:cover; }
+    .episode-body { padding:16px; }
+    .episode-tag { font-size:.68rem;letter-spacing:.08em;color:var(--elle-yellow);font-weight:900;text-transform:uppercase; }
+    .episode-body h3 { font-size:1rem;font-weight:800;margin:8px 0; }
+    .episode-body p { color:#c5bdc7;font-size:.86rem; }
+    .episode-body a { color:var(--elle-yellow);font-size:.83rem;font-weight:800; }
+    .about-img { width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:16px;filter:grayscale(100%); }
+    .value { display:flex;align-items:center;gap:10px;font-size:.88rem;font-weight:700; }
+    .value span { color:#d49f00;font-size:1.4rem; }
+    .contact { background:#0a0a0a;color:#fff;position:relative;overflow:hidden; }
+    .contact .section-lead { color:#c8c8c8; }
+    .contact-info { border-left:1px solid #484848;padding-left:28px; }
+    .contact-line { display:flex;gap:13px;align-items:flex-start;margin-bottom:18px;color:#e7e7e7; }
+    .contact-line .symbol { color:var(--yellow);font-size:1.2rem;width:24px; }
+    .contact-line a { color:#fff;overflow-wrap:anywhere; }
+    .contact-line a:hover { color:var(--yellow); }
+    .socials a { display:inline-grid;place-items:center;width:38px;height:38px;border:1px solid #4b4b4b;border-radius:50%;color:#fff;margin-right:7px;font-size:.8rem;font-weight:800; }
+    .socials a:hover { color:var(--yellow);border-color:var(--yellow); }
+    footer { background:#050505;color:#aaa;border-top:1px solid #333;padding:22px 0;font-size:.8rem; }
+    footer a { color:#ddd; }
+    footer a:hover { color:var(--yellow); }
+    @media (max-width: 767px) {
+  .hero { min-height: 450px; align-items: flex-start; }
+  .hero .container { padding-top: 0px; padding-bottom: 0px; }
+  .section-pad { padding: 62px 15px; } /* Ajoute de l'espace sur les côtés pour les sections */
+  .contact-info { border-left: 0; border-top: 1px solid #484848; padding: 25px 0 0; margin-top: 20px; }
+  .about-img { min-height: 240px; }
+  .container { padding-left: 15px !important; padding-right: 15px !important; }
+}
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container py-2">
+    <a class="brand" href="#accueil"><img src="images/logostudiowanou.png" alt="logo" style="height: 50px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Ouvrir le menu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav mx-auto my-3 my-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#accueil">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#elle-foot">Elle Foot</a></li>
+        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#apropos">À propos</a></li>
+       
+      </ul>
+      <a class="btn btn-yellow btn-sm" href="#contact">Contactez-nous </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="accueil">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-7">
+        <h1 class="fs-2 mb-4">Wanou<br><span>Studio</span></h1>
+        <h2 class="h5 fw-bold mb-3">Nous donnons forme<br>à vos idées.</h2>
+        <a class="btn btn-yellow btn-hero-mobile" href="#portfolio">Découvrir nos réalisations&nbsp; </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="section-pad" id="services">
+  <div class="container">
+    <div class="row mb-5">
+  <div class="col-lg-8">
+    <div class="eyebrow mb-2">Nos services</div>
+    <h2 class="section-title mb-3">Une expertise<br>au service de vos projets.</h2>
+    <p class="section-lead">Nous accompagnons les entreprises, associations, acteurs du sport et de la culture dans la création de contenus visuels impactants.</p>
+  </div>
+</div>
+    <div class="row g-3">
+      <div class="col-6 col-lg-3"><article class="service-card"><div class="service-icon">◎</div><h3>Photographie</h3><p>Portraits, sport, événements et corporate.</p></article></div>
+      <div class="col-6 col-lg-3"><article class="service-card"><div class="service-icon">▷</div><h3>Production vidéo</h3><p>Reels, interviews, clips, reportages et documentaires.</p></article></div>
+      <div class="col-6 col-lg-3"><article class="service-card"><div class="service-icon">✎</div><h3>Design graphique</h3><p>Identité visuelle, affiches, flyers, dépliants...</p></article></div>
+      <div class="col-6 col-lg-3"><article class="service-card"><div class="service-icon">●</div><h3>Lives </h3><p>Diffusion en direct de matchs, conférences, événements...</p></article></div>
+    </div>
+  </div>
+</section>
+
+<section class="elle" id="elle-foot">
+  <div class="elle-hero">
+    <div class="container py-5">
+      <div class="row"><div class="col-lg-4">
+        <div class="elle-logo mb-3">ELLE<br><span>FOOT.</span></div>
+        <p class="mb-4" style="color:#e1d9e3;max-width:460px">Dépasser les stéréotypes et célébrer la résilience du football féminin.</p>
+        <a class="btn btn-yellow" href="https://www.youtube.com/@ellefoot?sub_confirmation=1" target="_blank" rel="noopener">▶&nbsp; S’abonner sur YouTube&nbsp; </a>
+      </div></div>
+    </div>
+  </div>
+  <div class="container py-5">
+    <div class="elle-tabs"><a href="#podcasts">Podcasts</a></div>
+    <div id="podcasts" class="mb-5">
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-2 mb-3"><div><div class="eyebrow mb-2"></div><h2 class="h2 fw-bold mb-0">Derniers podcasts</h2></div><a class="fw-bold" style="color:var(--elle-yellow)" href="https://www.youtube.com/@ellefoot/videos" target="_blank" rel="noopener">Tous les épisodes ↗</a></div>
+      <div class="row g-3">
+    
+      <div class="col-12 col-lg-4" id="reportages">
+        <article class="episode-card">
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/d5OVFms1bW8?si=i5GtJgiW9kmQ05hU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="episode-body">
+                <div class="episode-tag">Podcast</div>
+                <h3>Titre de votre podcast</h3>
+            </div>
+        </article>
+    </div>
+
+    <div class="col-12 col-lg-4" id="reportages">
+        <article class="episode-card">
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/W_U119GOYpA?si=dmKVxP_UDufMdUOG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="episode-body">
+                <div class="episode-tag">Reportage</div>
+                <h3>Titre de votre reportage</h3>
+            </div>
+        </article>
+    </div>
+
+    <div class="col-12 col-lg-4" id="reportages">
+        <article class="episode-card">
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/d5OVFms1bW8?si=i5GtJgiW9kmQ05hU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="episode-body">
+                <div class="episode-tag">Reportage</div>
+                <h3>Titre de votre reportage</h3>
+            </div>
+        </article>
+    </div>
+
+</div>
+      <p class="small mt-3" style="color:#aaa"></p>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" id="apropos">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6"><img class="about-img" src="https://images.unsplash.com/photo-1502982720700-bfff97f2ecac?auto=format&fit=crop&w=1200&q=85" alt="Équipement photographique" loading="lazy"></div>
+      <div class="col-lg-6">
+        <div class="eyebrow mb-2">À propos de Wanou Studio</div>
+        <h2 class="section-title mb-3">Plus qu’un studio,<br>une vision.</h2>
+        <p class="section-lead">Wanou Studio donne vie aux idées à travers l’image, le récit et le design. Chaque projet est une occasion de raconter une histoire avec exigence.</p>
+        <div class="row g-3 my-3"><div class="col-4"><div class="value"><span>✳</span> Créativité</div></div><div class="col-4"><div class="value"><span>♡</span> Engagement</div></div><div class="col-4"><div class="value"><span>◎</span> Impact</div></div></div>
+        <a class="btn btn-outline-dark mt-2" href="#contact">En savoir plus </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad contact" id="contact">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5">
+        <div class="eyebrow mb-2">Contact</div>
+        <h2 class="section-title mb-3">Parlons de<br>votre <span style="color:var(--yellow)">projet.</span></h2>
+        <p class="section-lead">Une idée en tête ? Écrivez-nous, nous serons ravis d’échanger avec vous.</p>
+        <a class="btn btn-yellow mt-2" href="https://wa.me/22954652166" target="_blank" rel="noopener">WhatsApp&nbsp; · Écrire un message </a>
+        <p class="small text-secondary mt-2"></p>
+      </div>
+      <div class="col-lg-6 offset-lg-1 contact-info">
+        <div class="contact-line"><span class="symbol"><svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg></span><div><strong class="d-block mb-1">E-mail</strong><a href="mailto:contact.wanoustudio@gmail.com">contact.wanoustudio@gmail.com</a><div class="small text-secondary mt-1"></div></div></div>
+        <div class="contact-line"><span class="symbol"><svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg></span><div><strong class="d-block mb-1">Localisation</strong><span>Porto-Novo, Bénin</span></div></div>
+        <div class="contact-line"><span class="symbol"><svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16"><path d="M4.715 6.542L3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.001 1.001 0 0 0-.154.199 2 2 0 0 1 .616 3.059l-1.829 1.828a1 1 0 1 1-1.414-1.414l1.172-1.172a1 1 0 0 0 0-1.414 1 1 0 0 0-1.414 0zM11.285 9.458l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 5.672a3 3 0 0 0 .828 4.414L8 9.514a1.001 1.001 0 0 0 .154-.199 2 2 0 0 1-.616-3.059l1.829-1.828a1 1 0 1 1 1.414 1.414l-1.172 1.172a1 1 0 0 0 0 1.414 1 1 0 0 0 1.414 0z"/></svg></span><div><strong class="d-block mb-2">Suivez Wanou Studio</strong><div class="socials"><a href="#" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a><a href="https://www.facebook.com/eyetonstudio" aria-label="Facebook"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a><a href="#" aria-label="TikTok"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-5.201 1.743l-.002-.001.002.001a2.895 2.895 0 0 1 3.144-4.583v-3.48a6.349 6.349 0 0 0-5.342 6.273 6.352 6.352 0 0 0 7.234 6.295 6.35 6.35 0 0 0 5.48-6.295V9.068a8.196 8.196 0 0 0 4.75 1.49v-3.52a4.805 4.805 0 0 1-1.05-0.352z"/></svg></a><a href="#" aria-label="YouTube"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a></div><div class="small text-secondary mt-2"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+    <a class="brand" href="#accueil"><img src="images/logostudiowanou.png" alt="Wanou Studio" class="footer-logo-img" style="width: 80px; height: auto;"></a>
+    <div>Communication · Production audiovusuelle </div>
+    <div>© <span id="year"></span> Wanou Studio. Tous droits réservés.</div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
